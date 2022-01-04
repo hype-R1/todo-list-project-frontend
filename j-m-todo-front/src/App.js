@@ -15,14 +15,18 @@ function App(props) {
   );
   return (
     <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
+      <h1>J & M 
+        <ul>Todo List Project </ul>
+      </h1>
+        
+
       <Form />
       <div className="filters btn-group stack-exception">
         <FilterButton />
         <FilterButton />
         <FilterButton />
       </div>
-      <h2 id="list-heading">3 tasks remaining</h2>
+      <h2 id="list-heading">Things to do!</h2>
       <ul
         role="list"
         className="todo-list stack-large stack-exception"
