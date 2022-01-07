@@ -24,7 +24,7 @@ function App(props) {
       <div className="filters btn-group stack-exception">
         <FilterButton />
         <FilterButton />
-        <FilterButton />
+        {/* <FilterButton /> */}
       </div>
       <h2 id="list-heading">Things to do!</h2>
       <ul
