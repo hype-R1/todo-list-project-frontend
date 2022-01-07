@@ -2,14 +2,24 @@ import React from "react";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 import Todo from "./components/Todo";
+import { useState } from "react";
 
-function App(props) {
-  const taskList = props.tasks.map(task => (
+function App() {
+
+
+  const [todos, setTodos] =  useState([])
+
+  fetch("http://localhost:9292/todo")
+  .then(res => res.json)
+  .then(todosData => setTodos(todosData))
+
+
+  const taskList = todos.map(todos => (
     <Todo
-        id={task.id}
-        name={task.name}
-        completed={task.completed}
-        key={task.id}
+        id={todos.id}
+        name={todos.name}
+        status={todos.status}
+        key={todos.id}
       />
     )
   );

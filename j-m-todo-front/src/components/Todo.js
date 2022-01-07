@@ -1,21 +1,21 @@
 import React from "react";
 
 
-export default function Todo(props) {
+export default function Todo(todos) {
     return (
       <li className="todo stack-small">
        <div className="c-cb">
-           <input id={props.id} type="checkbox" defaultChecked={props.completed} />
-           <label className="todo-label" htmlFor={props.id}>
-               {props.name}
+           <input id={todos.id} type="checkbox" defaultChecked={todos.status} />
+           <label className="todo-label" htmlFor={todos.id}>
+               {todos.name}
            </label>
         </div>
         <div className="btn-group">
           <button type="button" className="btn">
-            Edit <span className="visually-hidden">{props.name}</span>
+            Edit <span className="visually-hidden">{todos.name}</span>
           </button>
           <button type="button" className="btn btn__danger">
-            Delete <span className="visually-hidden">{props.name}</span>
+            Delete <span className="visually-hidden">{todos.name}</span>
           </button>
         </div>
       </li>
