@@ -2,16 +2,19 @@ import React from "react";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 import Todo from "./components/Todo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
 
 
   const [todos, setTodos] =  useState([])
 
-  fetch("http://localhost:9292/todo")
+  const fetchTodos = () =>{
+    fetch("http://localhost:9292/todo")
   .then(res => res.json)
   .then(todosData => setTodos(todosData))
+  };
+  useEffect(fetchTodos, [])
 
 
   const taskList = todos.map(todos => (
@@ -23,6 +26,19 @@ function App() {
       />
     )
   );
+
+  const deleteTodos = (todo) => {
+    fetch(`http://localhost:9292/todo/${todo.id}`, {method: "DELETE"})
+
+    const revisedTodos = todos.filter(todo => todo.id ==! todo.id)
+    setTodos(revisedTodos)
+  }
+
+  const createTodos = () => {
+    
+  }
+
+
   return (
     <div className="todoapp stack-large">
       <h1>J & M 
