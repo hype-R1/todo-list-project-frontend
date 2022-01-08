@@ -17,6 +17,46 @@ function App() {
   useEffect(fetchTodos, [])
 
 
+  const deleteTodos = (todo) => {
+    fetch(`http://localhost:9292/todo/${todo.id}`, {method: "DELETE"})
+
+    const revisedTodos = todos.filter(todo => todo.id ==! todo.id)
+    setTodos(revisedTodos)
+  }
+
+  const createTodos = () => {
+    e.preventDefault()
+    const formData = {name}
+
+    fetch("http://localhost:9292/todo", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    })
+    .then((r) => r.json())
+    .then((newTodos) => {
+      onAddTodo(newTodos)
+    }) 
+  }
+
+  const editTodos = () => {
+    e.preventDefault()
+
+    fetch(`http://localhost:9292/todo/${todo.id}`,{
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(editedTodo),
+    })
+    todo.name = todoName 
+    todo.status = false
+  }
+
+
   const taskList = todos.map(todos => (
     <Todo
         id={todos.id}
@@ -27,17 +67,7 @@ function App() {
     )
   );
 
-  const deleteTodos = (todo) => {
-    fetch(`http://localhost:9292/todo/${todo.id}`, {method: "DELETE"})
-
-    const revisedTodos = todos.filter(todo => todo.id ==! todo.id)
-    setTodos(revisedTodos)
-  }
-
-  const createTodos = () => {
-    
-  }
-
+  
 
   return (
     <div className="todoapp stack-large">
