@@ -1,6 +1,12 @@
 import React from "react";
 
-function Form(props) {
+function Form( onAddTodo) {
+
+
+
+
+
+  
   return (
     <form>
       <h2 className="label-wrapper">

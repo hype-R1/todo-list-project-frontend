@@ -21,34 +21,28 @@ function App() {
       name={todos.todo_name}
       id={todos.id}
       status={todos.status}
-      key={todos.list_id}
+      key={todos.id}
         
       />
     )
   );
 
-  const deleteTodos = (todo) => {
-    fetch(`http://localhost:9292/todo/${todo.id}`, {method: "DELETE"})
-
-    const revisedTodos = todos.filter(todo => todo.id ==! todo.id)
-    setTodos(revisedTodos)
-  }
-
-  const createTodos = () => {
-    
-  }
+ 
 
 
   return (
     <div className="todoapp stack-large">
-      <h1>J & M 
-        <ul>Todo List Project </ul>
+      <h1 >
+        
+        J & M Todo List Project
+        
       </h1>
         
 
       <Form />
       <div className="filters btn-group stack-exception">
-        <FilterButton />
+       
+      <FilterButton  />
       
       </div>
       <h2 id="list-heading">Things to do!</h2>
@@ -62,5 +56,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

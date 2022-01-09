@@ -1,7 +1,19 @@
 import React from "react";
 
 
-export default function Todo(todos) {
+function Todo(todos) {
+
+  const doSomething = e => {
+    e.preventDefault();
+
+      console.log("hi")
+     // do something here
+    }
+
+
+
+  
+
     return (
       <li className="todo stack-small">
        <div className="c-cb">
@@ -11,13 +23,17 @@ export default function Todo(todos) {
            </label>
         </div>
         <div className="btn-group">
-          <button type="button" className="btn">
+          <button onClick={doSomething} type="button" className="btn" >
             Edit <span className="visually-hidden">{todos.name}</span>
           </button>
-          <button type="button" className="btn btn__danger">
+        <button onClick={doSomething} type="button" className="btn btn__danger" >
             Delete <span className="visually-hidden">{todos.name}</span>
           </button>
         </div>
       </li>
     );
   }
+
+
+
+  export default Todo;
