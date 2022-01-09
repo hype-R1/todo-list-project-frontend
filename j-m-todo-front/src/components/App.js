@@ -1,19 +1,19 @@
 import React from "react";
-import Form from "./components/Form";
-import FilterButton from "./components/FilterButton";
-import Todo from "./components/Todo";
+import Form from "./Form";
+import FilterButton from "./FilterButton";
+import Todo from "./Todo";
 import { useState, useEffect } from "react";
 
 function App() {
-
-
   const [todos, setTodos] =  useState([])
 
-  useState(() => {
-    fetch("http://localhost:9292/todos")
-    .then((r) => r.json())
-    .then((data) => setTodos(data));
+  
+useState(() => {
+  fetch("http://localhost:9292/todos")
+  .then((r) => r.json())
+  .then((data) => setTodos(data));
 }, []);
+
 
 
   const taskList = todos.map(todos => (
@@ -26,6 +26,22 @@ function App() {
       />
     )
   );
+
+  // function handleUpdateTodo(updatedTodo) {
+  //     const updatedTodoArray = todos.map((todo) => {
+  //       if (todo.id === updatedTodo.id) {
+  //         return updatedTodo;
+  //       } else {
+  //         return todo;
+  //       }
+  //     });
+  //     setTodos(updatedTodoArray);
+  //   }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('You clicked submit.');
+  }
 
  
 
@@ -46,6 +62,7 @@ function App() {
       
       </div>
       <h2 id="list-heading">Things to do!</h2>
+      
       <ul
         role="list"
         className="todo-list stack-large stack-exception"

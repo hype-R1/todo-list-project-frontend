@@ -1,6 +1,14 @@
 import React from "react";
+import { useState } from "react";
+
 
 function Form( onAddTodo) {
+
+  const [form, setForm] = useState('')
+
+  
+
+  
 
 
 
@@ -8,7 +16,7 @@ function Form( onAddTodo) {
 
   
   return (
-    <form>
+    <form >
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
           What ya got ToDo?
@@ -21,7 +29,7 @@ function Form( onAddTodo) {
         name="text"
         autoComplete="off"
       />
-      <button type="submit" className="btn btn__primary btn__lg">
+      <button  type="submit" className="btn btn__primary btn__lg">
         Add
       </button>
     </form>
